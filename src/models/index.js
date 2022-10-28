@@ -19,6 +19,6 @@ const sequelize = new Sequelize(
 const db = {}
 db.sequelize = sequelize
 db.Sequelize = Sequelize
-db.users = require('../models/user.model.js')(db.sequelize, db.Sequelize)
+db.users = require('./user.model.js')(db.sequelize, db.Sequelize)
 db.users.sync()
 module.exports = db

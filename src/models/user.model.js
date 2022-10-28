@@ -8,21 +8,23 @@ module.exports = (sequelize, Sequelize) => {
         username: {
             type: Sequelize.STRING,
             notNull: true,
-            is:/^[a-zA-z0-9\._]{4, 32}$/,
-            unique:true
+            is:/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z._]+(?<![_.])$/,
         },
         email:{
             type: Sequelize.STRING,
             notNull: true,
+            is:/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             unique:true
         },
         password: {
             type: Sequelize.STRING,
-            notNull:true
+            notNull:true,
+            is:/^(?=.*[0-9])(?=.*[a-z]).{8,}$/
+
         }
     },
     {
-        timestamps: true,
+        timestamps: false,
     }   
 
 )

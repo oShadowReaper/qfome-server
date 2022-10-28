@@ -49,3 +49,16 @@ exports.delete = async (id) => {
         throw Error('Ocorreu um erro ao deletar o usuario. ERROR: ' + e.message)
     }
 }
+exports.login = async (email, password) => {
+    try{
+        const user = await User.findOne(
+            {where:{email: email, password: password}},
+          
+        )
+        return user
+    } catch (e){
+        throw Error('Login Error ' + e.message)
+    }
+    
+
+}
